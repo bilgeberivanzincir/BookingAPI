@@ -63,3 +63,5 @@ C:\Users\zinci\source\repos\TechBookingAPI\TechBookingAPI\obj\Debug\net6.0\refin
 C:\Users\zinci\source\repos\TechBookingAPI\TechBookingAPI\obj\Debug\net6.0\TechBookingAPI.pdb
 C:\Users\zinci\source\repos\TechBookingAPI\TechBookingAPI\obj\Debug\net6.0\TechBookingAPI.genruntimeconfig.cache
 C:\Users\zinci\source\repos\TechBookingAPI\TechBookingAPI\obj\Debug\net6.0\ref\TechBookingAPI.dll
+C:\Users\zinci\source\repos\TechBookingAPI\TechBookingAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\zinci\source\repos\TechBookingAPI\TechBookingAPI\obj\Debug\net6.0\TechBookingAPI.sourcelink.json

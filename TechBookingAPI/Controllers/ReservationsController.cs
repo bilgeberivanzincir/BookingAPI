@@ -20,7 +20,7 @@ namespace TechBookingAPI.Controllers
         [HttpGet]
         public IActionResult GetReservations()
         {
-            var reservations = _context.Reservations.ToList();
+            var reservations = _context.Reservations.Include(r => r.Room).Include(r => r.Client.Company).ToList();
             return Ok(reservations);
            
         }
@@ -28,7 +28,7 @@ namespace TechBookingAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetReservation(int id)
         {
-            var reservation = _context.Reservations.Find(id);
+            var reservation = _context.Reservations.Include(r => r.Room).Include(r => r.Client.Company).FirstOrDefault(r => r.Id == id);
             if (reservation == null)
             {
                 return NotFound();
@@ -38,10 +38,20 @@ namespace TechBookingAPI.Controllers
 
         [HttpPost]
         public IActionResult PostReservation(Reservation reservation)
-        {
+        { 
+            if(reservation==null)
+            {
+                return BadRequest("Reservation is null");
+            }
+            if(reservation.ClientId == 0 || reservation.RoomId == 0)
+            {
+                return BadRequest("Client or Room id is missing");
+            }
             _context.Reservations.Add(reservation);
             _context.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
+
+
         }
 
         //DELETE: api/Reservations/1
@@ -74,7 +84,6 @@ namespace TechBookingAPI.Controllers
             {
                 return NotFound("Reservation not found");
             }
-
      
             reservation.ReservationDuration = updatedReservation.ReservationDuration;
             reservation.ReservationTime = updatedReservation.ReservationTime;

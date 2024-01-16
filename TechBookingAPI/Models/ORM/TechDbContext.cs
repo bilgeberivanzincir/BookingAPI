@@ -9,7 +9,6 @@ namespace TechBookingAPI.Models.ORM
         {
 
         }
-
         public DbSet<Client> Clients { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Room> Rooms { get; set; }
